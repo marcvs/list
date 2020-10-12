@@ -1,0 +1,20 @@
+Source: list
+Section: misc
+Priority: optional
+Maintainer: Marcus Hardt <marcus@hardt-it.de>
+Homepage: https://github.com/clibs/list
+Standards-Version: 4.5.0
+Vcs-Git: https://github.com/clibs/list.git
+Vcs-Browser: https://github.com/clibs/list
+Rules-Requires-Root: no
+Build-Depends: debhelper-compat (= 13),
+               fakeroot,
+               devscripts
+
+Package: list
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+Description: C doubly linked list implementation
+ Animplementation of double linked list from the clibs package 
+ manager for the C programming language on github
+

@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+# vi: ts=8 sw=8 noet
+
+export DEB_BUILD_MAINT_OPTIONS  = hardening=+all
+
+export PREFIX = $(shell pwd)/debian/tmp/usr
+
+%:
+	dh $@ --no-parallel
+
