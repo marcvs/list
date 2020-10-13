@@ -6,5 +6,5 @@ export DEB_BUILD_MAINT_OPTIONS  = hardening=+all
 export PREFIX = $(shell pwd)/debian/tmp/usr
 
 %:
-	dh $@ --no-parallel
+	dh $@
 
