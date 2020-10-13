@@ -1,6 +1,1 @@
-.DS_Store
-bin
-.pomo
-*.o
-build
-deps
+.pc
