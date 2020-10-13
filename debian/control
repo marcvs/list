@@ -11,7 +11,14 @@ Build-Depends: debhelper-compat (= 13),
                fakeroot,
                devscripts
 
-Package: list
+Package: liblist1
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+Description: C doubly linked list implementation
+ Animplementation of double linked list from the clibs package 
+ manager for the C programming language on github
+
+Package: liblist1-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
 Description: C doubly linked list implementation
