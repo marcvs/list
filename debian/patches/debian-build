@@ -1,12 +1,29 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -14,7 +14,9 @@ OBJS = $(SRCS:.c=.o)
- all: build/liblist.a
+@@ -11,10 +11,13 @@ SRCS = src/list.c \
+ 
+ OBJS = $(SRCS:.c=.o)
+ 
+-all: build/liblist.a
++all: build/liblist.a build/liblist.so.1
  
  install: all
-+	test -d $(PREFIX)/lib || mkdir -p $(PREFIX)/lib/
++	test -d $(PREFIX)/lib || mkdir -p $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`
  	cp -f build/liblist.a $(PREFIX)/lib/liblist.a
++	cp -f build/liblist.so.1 $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/
 +	test -d $(PREFIX)/include || mkdir -p $(PREFIX)/include/
  	cp -f src/list.h $(PREFIX)/include/list.h
  
  uninstall:
+@@ -25,6 +28,11 @@ build/liblist.a: $(OBJS)
+ 	@mkdir -p build
+ 	$(AR) rcs $@ $^
+ 
++build/liblist.so.1: $(OBJS)
++	@mkdir -p build
++	ld -shared -lc -soname `basename $@` src/*.o -o $@
++	strip --strip-unneeded --remove-section=.comment --remove-section=.note $@
++
+ bin/test: test.o $(OBJS)
+ 	@mkdir -p bin
+ 	$(CC) $^ -o $@
