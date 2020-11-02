@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: oidc-agent
+Upstream-Name: list
 Upstream-Contact: TJ Holowaychuk <tj@vision-media.ca>
 Source: https://github.com/clibs/list
 
