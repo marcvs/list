@@ -8,8 +8,9 @@
 +all: build/liblist.a build/liblist.so.1
  
  install: all
+-	cp -f build/liblist.a $(PREFIX)/lib/liblist.a
 +	test -d $(PREFIX)/lib || mkdir -p $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`
- 	cp -f build/liblist.a $(PREFIX)/lib/liblist.a
++	cp -f build/liblist.a $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.a
 +	cp -f build/liblist.so.1 $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so.0.1.0
 +	ln -s liblist.so.0.1.0 $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so.1
 +	ln -s liblist.so.1 $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so
