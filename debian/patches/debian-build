@@ -1,3 +1,7 @@
+Make sure that
+- debian requiements for libs are met
+- libs are installed to the proper location
+
 --- a/Makefile
 +++ b/Makefile
 @@ -11,10 +11,15 @@ SRCS = src/list.c \
@@ -24,7 +28,7 @@
  
 +build/liblist.so.1: $(OBJS)
 +	@mkdir -p build
-+	ld -shared -lc -soname `basename $@` src/*.o -o $@
++	ld -z now -shared -lc -soname `basename $@` src/*.o -o $@
 +	strip --strip-unneeded --remove-section=.comment --remove-section=.note $@
 +
  bin/test: test.o $(OBJS)
