@@ -1,0 +1,15 @@
+liblist.so.1 liblist #MINVER#
+ list_at@Base 0.1.0-5
+ list_destroy@Base 0.1.0-5
+ list_find@Base 0.1.0-5
+ list_iterator_destroy@Base 0.1.0-5
+ list_iterator_new@Base 0.1.0-5
+ list_iterator_new_from_node@Base 0.1.0-5
+ list_iterator_next@Base 0.1.0-5
+ list_lpop@Base 0.1.0-5
+ list_lpush@Base 0.1.0-5
+ list_new@Base 0.1.0-5
+ list_node_new@Base 0.1.0-5
+ list_remove@Base 0.1.0-5
+ list_rpop@Base 0.1.0-5
+ list_rpush@Base 0.1.0-5
