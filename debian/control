@@ -18,9 +18,10 @@ Description: C doubly linked list implementation
  Animplementation of double linked list from the clibs package 
  manager for the C programming language on github
 
-Package: liblist1-dev
+Package: liblist-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
+    liblist1 (= ${binary:Version})
 Description: C doubly linked list implementation
  Animplementation of double linked list from the clibs package 
  manager for the C programming language on github
