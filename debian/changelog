@@ -1,9 +1,10 @@
 list (0.1.0-4) UNRELEASED; urgency=medium
 
   * Initial release. (Closes: ITP)
-  * Fix Symlinks for libs 
+  * Fix Symlinks for libs
   * Include static lib into -dev package
   * Make -dev package depend on lib
   * Change name from liblist1-dev to liblist-dev
+  * Address Lintian Information
 
  -- Marcus Hardt <marcus@hardt-it.de>  Mon, 12 Oct 2020 17:52:37 +0200
