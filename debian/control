@@ -1,5 +1,5 @@
 Source: list
-Section: misc
+Section: utils
 Priority: optional
 Maintainer: Marcus Hardt <marcus@hardt-it.de>
 Homepage: https://github.com/clibs/list
@@ -12,17 +12,20 @@ Build-Depends: debhelper-compat (= 13),
                devscripts
 
 Package: liblist1
+Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
 Description: C doubly linked list implementation
- Animplementation of double linked list from the clibs package 
+ Animplementation of double linked list from the clibs package
  manager for the C programming language on github
 
 Package: liblist-dev
+Section: libdevel
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
     liblist1 (= ${binary:Version})
-Description: C doubly linked list implementation
- Animplementation of double linked list from the clibs package 
- manager for the C programming language on github
-
+Description: C doubly linked list implementation - development files
+ Animplementation of double linked list from the clibs package
+ manager for the C programming language on github.
+ .
+ It contains libraries and header files.
