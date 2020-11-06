@@ -7,4 +7,3 @@ export PREFIX = $(shell pwd)/debian/tmp/usr
 
 %:
 	dh $@
-
