@@ -4,29 +4,33 @@ Make sure that
 
 --- a/Makefile
 +++ b/Makefile
-@@ -11,10 +11,15 @@ SRCS = src/list.c \
+@@ -11,10 +11,19 @@ SRCS = src/list.c \
  
  OBJS = $(SRCS:.c=.o)
  
 -all: build/liblist.a
-+all: build/liblist.a build/liblist.so.1
++MAJOR_VERSION = 0
++MINOR_VERSION = 1
++PATCH_VERSION = 0
++
++all: build/liblist.a build/liblist.so.$(MAJOR_VERSION)
  
  install: all
 -	cp -f build/liblist.a $(PREFIX)/lib/liblist.a
 +	test -d $(PREFIX)/lib || mkdir -p $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`
 +	cp -f build/liblist.a $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.a
-+	cp -f build/liblist.so.1 $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so.0.1.0
-+	ln -s liblist.so.0.1.0 $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so.1
-+	ln -s liblist.so.1 $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so
++	cp -f build/liblist.so.$(MAJOR_VERSION) $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so.$(MAJOR_VERSION).$(MINOR_VERSION).$(PATCH_VERSION)
++	ln -s liblist.so.$(MAJOR_VERSION).$(MINOR_VERSION).$(PATCH_VERSION) $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so.$(MAJOR_VERSION)
++	ln -s liblist.so.$(MAJOR_VERSION) $(PREFIX)/lib/`dpkg-architecture -qDEB_HOST_MULTIARCH`/liblist.so
 +	test -d $(PREFIX)/include || mkdir -p $(PREFIX)/include/
  	cp -f src/list.h $(PREFIX)/include/list.h
  
  uninstall:
-@@ -25,6 +30,11 @@ build/liblist.a: $(OBJS)
+@@ -25,6 +34,11 @@ build/liblist.a: $(OBJS)
  	@mkdir -p build
  	$(AR) rcs $@ $^
  
-+build/liblist.so.1: $(OBJS)
++build/liblist.so.$(MAJOR_VERSION): $(OBJS)
 +	@mkdir -p build
 +	ld -z now -shared -lc -soname `basename $@` src/*.o -o $@
 +	strip --strip-unneeded --remove-section=.comment --remove-section=.note $@

@@ -1,4 +1,4 @@
-Source: list
+Source: clibs-list
 Section: utils
 Priority: optional
 Maintainer: Marcus Hardt <marcus@hardt-it.de>
@@ -11,7 +11,7 @@ Build-Depends: debhelper-compat (= 13),
                fakeroot,
                devscripts
 
-Package: liblist1
+Package: libclibs-list0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
@@ -19,11 +19,11 @@ Description: C doubly linked list implementation
  Animplementation of double linked list from the clibs package
  manager for the C programming language on github
 
-Package: liblist-dev
+Package: libclibs-list-dev
 Section: libdevel
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
-    liblist1 (= ${binary:Version})
+    libclibs-list0 (= ${binary:Version})
 Description: C doubly linked list implementation - development files
  Animplementation of double linked list from the clibs package
  manager for the C programming language on github.
